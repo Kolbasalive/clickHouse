@@ -1,0 +1,20 @@
+version: '3.8'
+services:
+  clickhouse-server:
+    image: clickhouse/clickhouse-server:latest
+    container_name: clickhouse-server
+    ports:
+      - "9000:9000"
+      - "8123:8123"  # HTTP порт для ClickHouse
+    volumes:
+      - ./migrations:/docker-entrypoint-initdb.d  # Папка с миграциями
+      - ./data:/data  # Папка с вашим файлом
+    restart: always
+
+  clickhouse-client:
+    image: clickhouse/clickhouse-client:latest
+    depends_on:
+      - clickhouse-server
+    entrypoint: /bin/sh -c "sleep 5 && clickhouse-client -h clickhouse-server"
+    stdin_open: true
+    tty: true
