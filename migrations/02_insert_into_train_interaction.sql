@@ -1,1 +1,0 @@
-INSERT INTO train_interactions FROM INFILE '/data/train_interactions.parquet' FORMAT parquet;
