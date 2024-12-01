@@ -1,0 +1,1 @@
+INSERT INTO items_meta FROM INFILE '/db/data/items_meta.parquet.parquet' FORMAT parquet

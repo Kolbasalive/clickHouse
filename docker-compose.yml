@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   clickhouse-server:
     image: clickhouse/clickhouse-server:latest
@@ -7,8 +6,8 @@ services:
       - "9000:9000"
       - "8123:8123"  # HTTP порт для ClickHouse
     volumes:
-      - ./migrations:/docker-entrypoint-initdb.d  # Папка с миграциями
-      - ./data:/data  # Папка с вашим файлом
+      - ./db/data/migrations:/docker-entrypoint-initdb.d  # Папка с миграциями
+      - ./db/data:/data  # Папка с вашим файлом
     restart: always
 
   clickhouse-client:

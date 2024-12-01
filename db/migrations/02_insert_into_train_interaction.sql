@@ -1,1 +1,1 @@
-INSERT INTO train_interactions FROM INFILE '/data/train_interactions.parquet' FORMAT parquet;
+INSERT INTO train_interactions FROM INFILE '/db/data/train_interactions.parquet' FORMAT parquet;
