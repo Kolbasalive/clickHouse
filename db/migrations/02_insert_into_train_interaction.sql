@@ -1,1 +1,2 @@
-INSERT INTO train_interactions FROM INFILE '/db/data/train_interactions.parquet' FORMAT parquet;
+INSERT INTO train_interactions 
+SELECT * FROM file('/var/lib/clickhouse/user_files/data/train_interactions.parquet', 'Parquet');

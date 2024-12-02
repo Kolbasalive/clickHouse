@@ -1,1 +1,2 @@
-INSERT INTO users_meta FROM INFILE '/db/data/users_meta.parquet/parquet' FORMAT parquet
+INSERT INTO users_meta 
+SELECT * FROM file('/var/lib/clickhouse/user_files/data/users_meta.parquet.parquet', 'Parquet')
