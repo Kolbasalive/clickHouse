@@ -1,4 +1,8 @@
 FROM clickhouse/clickhouse-server:latest
 
 # Копируем миграции в контейнер
-COPY init.sql /docker-entrypoint-initdb.d/
+COPY init.sql /docker-entrypoint-initdb.d/init.sql
+
+# Запуск скрипта
+CMD clickhouse-server --config-file=/etc/clickhouse-server/config.xml &
+sleep 5 && clickhouse-client --multiquery < /docker-entrypoint-initdb.d/init.sql && wait

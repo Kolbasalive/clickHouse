@@ -7,7 +7,7 @@ services:
       - "9000:9000"
       - "8123:8123"  # HTTP порт для ClickHouse
     volumes:
-     - ./db/cmd:/docker-entrypoint-initdb.d
+     - ./db/migrations:/docker-entrypoint-initdb.d
      - ./db/data:/var/lib/clickhouse/user_files/data
      - ./db/migrations:/var/lib/clickhouse/user_files/migrations
     restart: always
